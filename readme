@@ -1,0 +1,27 @@
+1)the code starts by importing necessary libraries for working with JSON data and making HTTP requests.
+2)fetchWeatherData method is responsible for fetching weather data from the OpenWeatherMap API;
+it takes two parameters: apiName (a string that specifies the API to use) and location (the location for which to retrieve weather data);
+it constructs a URL to the OpenWeatherMap API using the provided location and API key. Then, it makes an HTTP GET request to that URL;
+if the response code is 200 (indicating a successful request), it reads and processes the JSON response data and returns it as a JSONObject;
+if an exception occurs during the process, it prints the exception details and returns null.
+3)mapToCommonModel method maps the specific weather data from the OpenWeatherMap response to a common data model;
+it takes a JSONObject containing API-specific data and extracts relevant fields such as temperature, humidity, weather condition, and location.
+it returns a new JSONObject representing the common data model.
+4)main method is the entry point of the program;
+it creates an instance of the WeatherAdapter class and calls the fetchWeatherData method to retrieve weather data for a specified location ("Aktobe" in this example) from the OpenWeatherMap API;
+if the weather data is successfully retrieved, it prints the common weather data to the console;
+5)the common weather data is printed to the console using the System.out.println method. It is formatted with toString(2) to make it more human-readable.
+Here the adapter refers to the WeatherAdapter class, because exactly this class acts as an intermediary or bridge between the weather data retrieval from an external API (OpenWeatherMap site) and the user interface (the WeatherApp GUI).
+WeatherApp is a Java Swing GUI application that allows users to fetch and display weather information using the OpenWeatherMap API.
+WeatherApp Class is the main class for the weather application, because it contains the GUI components and handles user interactions.
+in the WeatherApp() constructor we initialize the `WeatherAdapter` and set up the user interface.
+initializeUI() method sets up the graphical user interface and it creates a JFrame with a title, sets its size, and uses a BorderLayout manager to organize the components.
+Top Panel is a JPanel at the top containing a JLabel for "Enter City," a JTextField for user input, and a JButton labeled "Get Weather."
+Center Panel is a JTextArea wrapped in a JScrollPane to display the weather information and it's initially set as non-editable.
+Button Action Listener this listener is attached to the "Get Weather" button, because when the button is clicked, it triggers an action and it extracts the user's input (city name), calls the `fetchWeatherData` method from the `WeatherAdapter`, and then displays the weather information using the `displayWeatherData` method.
+displayWeatherData(JSONObject data) is the method, that formats and displays the weather information obtained from the API response and It extracts the location, temperature, humidity, and condition from the JSON data and formats them for display. The temperature and humidity are extracted as double values from the JSON, converted to the desired format, and concatenated with the appropriate units (°C and %).
+displayErrorMessage(String message)is a method that is used to display error messages on the JTextArea in case of issues like empty input or API errors.
+displayGUI() is a method that ensures that the GUI is displayed on the Swing Event Dispatch Thread to prevent thread-related issues.
+main()` is the main entry point for the application creates an instance of `WeatherApp` and calls `displayGUI()` to display the GUI to the user.
+
+
